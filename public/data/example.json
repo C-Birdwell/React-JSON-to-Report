@@ -1,0 +1,6 @@
+{
+  "logging": "DEBUG",
+  "notice": "WARN",
+  "request": "ERROR",
+  "report": "INFO"
+}
