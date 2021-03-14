@@ -1,0 +1,51 @@
+@import '../utils/import';
+
+.list-item {
+  display: block;
+  width: 100%;
+  background-color: $color-background;
+  color: #fff;
+  margin-bottom: 20px;
+  padding: 20px 2.5%;
+  box-sizing: border-box;
+  border: 2px solid #fff;
+  border-radius: 15px;
+  &.list-debug {
+    border-color: $color-debug;
+    .list-item-value {
+      color: $color-debug;
+    }
+  }
+  &.list-info {
+    @include list-color($color-info);
+  }
+  &.list-error {
+    border-color: $color-error;
+    .list-item-value {
+      color: $color-error;
+    }
+  }
+  &.list-warn {
+    border-color: $color-warn;
+    .list-item-value {
+      color: $color-warn;
+    }
+  }
+  &-name {
+    display: flex;
+    flex: 1;
+    box-sizing: border-box;
+    border-radius: 4px;
+    max-height: 38px;
+    border-width: 0px;
+    padding-left: 8px;
+    outline: none;
+  }
+  &-note {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+}

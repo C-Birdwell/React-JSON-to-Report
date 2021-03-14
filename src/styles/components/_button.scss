@@ -1,0 +1,29 @@
+.button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  border-width: 0px;
+  max-width: 150px;
+  width: 100%;
+  flex: 1;
+  color: #000;
+  justify-self: center;
+  align-self: center;
+  padding: 10px;
+  outline: none;
+  transition: transform 0.75s;
+  cursor: pointer;
+  border-radius: 15px;
+  max-height: 35px;
+  &:hover {
+    transform: scale(1.15);
+  }
+  &.light-text {
+    color: #fff;
+  }
+  svg {
+    display: flex;
+    align-self: flex-end;
+  }
+}

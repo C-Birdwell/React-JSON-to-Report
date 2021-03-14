@@ -1,0 +1,16 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+@for $i from 1 through 100 {
+  .col-#{$i} {
+    display: flex;
+    flex: $i;
+    flex-direction: column;
+  }
+  .push-#{$i} {
+    margin-bottom: #{$i}px;
+  }
+}

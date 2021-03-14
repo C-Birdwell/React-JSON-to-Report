@@ -1,8 +1,15 @@
+import { useContext } from 'react';
+
+import { ListProvider } from './state';
+import { Header, ListContainer, ListAddItem } from './components';
+
 const App = () => {
   return (
-    <div className='App'>
-      <div className='thing'>Hello</div>
-    </div>
+    <ListProvider>
+      <Header />
+      <ListContainer />
+      <ListAddItem />
+    </ListProvider>
   );
 };
 

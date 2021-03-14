@@ -1,0 +1,6 @@
+@mixin list-color($color) {
+  border-color: $color;
+  .label {
+    color: $color;
+  }
+}
