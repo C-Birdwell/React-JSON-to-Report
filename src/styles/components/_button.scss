@@ -1,7 +1,7 @@
+@import '../utils/import';
+
 .button {
-  appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
+  @extend %no-appearance;
   display: flex;
   border-width: 0px;
   max-width: 150px;
@@ -25,5 +25,9 @@
   svg {
     display: flex;
     align-self: flex-end;
+  }
+  p {
+    margin-top: -1px;
+    font-size: 16px;
   }
 }

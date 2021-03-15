@@ -14,3 +14,12 @@
     margin-bottom: #{$i}px;
   }
 }
+
+.pos {
+  &-start button {
+    align-self: flex-start;
+  }
+  &-end button {
+    align-self: flex-end;
+  }
+}

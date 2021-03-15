@@ -25,7 +25,7 @@ export const ButtonImport = () => {
   return (
     <Button
       func={() => requestFile()}
-      color='yellow'
+      color='blue'
       text='Import'
       icon={faDownload}
     />

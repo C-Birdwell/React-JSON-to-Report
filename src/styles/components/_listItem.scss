@@ -10,26 +10,18 @@
   box-sizing: border-box;
   border: 2px solid #fff;
   border-radius: 15px;
+  transition: border-color 0.5s;
   &.list-debug {
-    border-color: $color-debug;
-    .list-item-value {
-      color: $color-debug;
-    }
+    @include list-color($color-debug);
   }
   &.list-info {
     @include list-color($color-info);
   }
   &.list-error {
-    border-color: $color-error;
-    .list-item-value {
-      color: $color-error;
-    }
+    @include list-color($color-error);
   }
   &.list-warn {
-    border-color: $color-warn;
-    .list-item-value {
-      color: $color-warn;
-    }
+    @include list-color($color-warn);
   }
   &-name {
     display: flex;
@@ -42,10 +34,15 @@
     outline: none;
   }
   &-note {
+    @extend %no-appearance;
     display: flex;
-    flex: 1;
     width: 100%;
-    height: 200px;
+    height: 100px;
     margin-bottom: 20px;
+    outline: none;
+    box-sizing: border-box;
+  }
+  &-keyval {
+    font-size: 20px;
   }
 }

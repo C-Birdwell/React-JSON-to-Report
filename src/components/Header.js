@@ -21,7 +21,7 @@ export const Header = () => {
         <div className='col-1'>
           {list.length > 0 && (
             <Button
-              func={() => alert('Sending JSON')}
+              func={() => alert('Sending...')}
               color='green'
               text='Send'
               icon={faPaperPlane}

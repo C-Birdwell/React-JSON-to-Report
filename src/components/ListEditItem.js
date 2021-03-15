@@ -51,22 +51,17 @@ export const ListEditItem = ({ name, value, note, id }) => {
     );
   };
 
-  const _delete = () => {
-    setEditable(false);
-    setList(list.filter((lis) => lis.id !== thisListItem.id));
-  };
-
   const addNote = () => {
     if (note || editNoteFlag || editNote) {
       return (
         <>
-          <p>Note:</p>
+          <p className='label'>Note:</p>
           <textarea
             value={editNote}
             onChange={(e) => setEditNote(e.target.value)}
             className='list-item-note'
           />
-          <div className='row push-40'>
+          <div className='row push-20'>
             <div className='col-1'>
               <Button
                 func={() => {
@@ -78,20 +73,22 @@ export const ListEditItem = ({ name, value, note, id }) => {
                 icon={faTrash}
               />
             </div>
-            <div className='col-1'>
-              <Button
-                func={() => setEditNote('')}
-                color='yellow'
-                text='Clear Note'
-                icon={faEraser}
-              />
-            </div>
+            {editNote.length > 0 && (
+              <div className='col-1'>
+                <Button
+                  func={() => setEditNote('')}
+                  color='yellow'
+                  text='Clear Note'
+                  icon={faEraser}
+                />
+              </div>
+            )}
           </div>
         </>
       );
     }
     return (
-      <div className='col-1 push-40'>
+      <div className='col-1 push-20'>
         <Button
           func={() => setEditNoteFlag(true)}
           color='teal'
@@ -102,20 +99,20 @@ export const ListEditItem = ({ name, value, note, id }) => {
     );
   };
 
-  return (
-    <>
-      <div className='row push-40'>
-        <div className='col-1'>
-          <p>Name:</p>
-          <input
-            className='list-item-name'
-            value={editName}
-            onChange={(e) => setEditName(e.target.value)}
-            type='text'
-          />
-        </div>
-        <div className='col-1'>
-          <p>Value:</p>
+  const inputs = () => (
+    <div className='row push-40'>
+      <div className='col-1' style={{ paddingRight: '2.5%' }}>
+        <p className='label'>Name:</p>
+        <input
+          className='list-item-name'
+          value={editName}
+          onChange={(e) => setEditName(e.target.value)}
+          type='text'
+        />
+      </div>
+      <div className='col-1' style={{ paddingLeft: '2.5%' }}>
+        <p className='label'>Value:</p>
+        <div className='select'>
           <Select
             options={statusOptions}
             defaultValue={defaultValue}
@@ -123,12 +120,18 @@ export const ListEditItem = ({ name, value, note, id }) => {
           />
         </div>
       </div>
+    </div>
+  );
+
+  return (
+    <>
+      {inputs()}
       <div className='col-3'>
         {addNote(note, setEditNote, editNoteFlag, setEditNoteFlag)}
       </div>
 
       <div className='row'>
-        <div className='col-1'>
+        <div className='col-1 pos-start'>
           <Button
             func={() => setEditable(false)}
             color='yellow'
@@ -137,7 +140,7 @@ export const ListEditItem = ({ name, value, note, id }) => {
           />
         </div>
 
-        <div className='col-1'>
+        <div className='col-1 pos-end'>
           <Button
             func={() => _update()}
             color='green'

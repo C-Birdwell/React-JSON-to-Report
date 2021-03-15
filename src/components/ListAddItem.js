@@ -2,10 +2,8 @@ import { useContext, useState, useEffect, useRef } from 'react';
 import Select from 'react-select';
 import { v4 as uuidv4 } from 'uuid';
 import {
-  faBan,
   faEraser,
   faTrash,
-  faTrashAlt,
   faCheckCircle,
   faPlusCircle,
 } from '@fortawesome/free-solid-svg-icons';
@@ -76,7 +74,7 @@ export const ListAddItem = () => {
     if (editNoteFlag || editNote) {
       return (
         <div className='col-1'>
-          <p>Note:</p>
+          <p className='label'>Note:</p>
           <textarea
             value={editNote}
             onChange={(e) => setEditNote(e.target.value)}
@@ -94,14 +92,16 @@ export const ListAddItem = () => {
                 icon={faTrash}
               />
             </div>
-            <div className='col-1'>
-              <Button
-                func={() => setEditNote('')}
-                color='yellow'
-                text='Clear Note'
-                icon={faEraser}
-              />
-            </div>
+            {editNote.length > 0 && (
+              <div className='col-1'>
+                <Button
+                  func={() => setEditNote('')}
+                  color='yellow'
+                  text='Clear Note'
+                  icon={faEraser}
+                />
+              </div>
+            )}
           </div>
         </div>
       );
@@ -116,34 +116,45 @@ export const ListAddItem = () => {
     );
   };
 
+  const inputs = () => (
+    <div className='row push-20'>
+      <div className='col-1' style={{ paddingRight: '2.5%' }}>
+        <p className='label'>Name:</p>
+        <input
+          className='list-item-name'
+          value={editName}
+          onChange={(e) => setEditName(e.target.value)}
+          type='text'
+        />
+      </div>
+      <div className='col-1' style={{ paddingLeft: '2.5%' }}>
+        <p className='label'>Value:</p>
+        <div className='select'>
+          <Select
+            options={statusOptions}
+            onChange={(e) => setEditValue(e.value)}
+          />
+        </div>
+      </div>
+    </div>
+  );
+
   if (addListItem) {
     return (
       <div className='add-list-item-wrapper'>
         <div className='add-list-item-container' ref={modal}>
-          <div className='row'>
-            <div className='col-1'>
-              <p>Name:</p>
-              <input
-                className='list-item-name'
-                value={editName}
-                onChange={(e) => setEditName(e.target.value)}
-                type='text'
-              />
-            </div>
-            <div className='col-1'>
-              <p>Value:</p>
-              <Select
-                options={statusOptions}
-                onChange={(e) => setEditValue(e.value)}
-              />
-            </div>
-          </div>
+          {inputs()}
           <div className='col-3'>
-            <div className='list-item-note'>{addNote()}</div>
+            <div className='col-1 push-20'>{addNote()}</div>
           </div>
           <div className='col-1'>
             {editName && editValue && (
-              <button onClick={() => _addItem()}>Add Item</button>
+              <Button
+                func={() => _addItem()}
+                color='green'
+                text='Add Item'
+                icon={faCheckCircle}
+              />
             )}
           </div>
         </div>

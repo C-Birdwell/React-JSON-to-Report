@@ -4,10 +4,10 @@ import { EditContext, ListContext } from '../state';
 import { Button } from './subComponents';
 import { faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-const noteSection = (note) => (
-  <div className='col-3'>
-    <p className='label'>Note:</p>
-    <p>{note}</p>
+const infoData = (label, val, style) => (
+  <div className='col-1' style={style}>
+    <p className='label'>{label}:</p>
+    <p className='list-item-keyval'>{val}</p>
   </div>
 );
 
@@ -23,18 +23,12 @@ export const ListItemInfo = ({ name, value, note, id }) => {
   return (
     <>
       <div className='row push-20'>
-        <div className='col-1'>
-          <p className='push-20 label'>Name:</p>
-          <p>{name}</p>
-        </div>
-        <div className='col-1'>
-          <p className='push-20 label'>Value:</p>
-          <p>{value}</p>
-        </div>
+        {infoData('Name', name, { paddingRight: '2.5%' })}
+        {infoData('Value', value, { paddingLeft: '2.5%' })}
       </div>
-      {note && noteSection(note)}
-      <div className='row '>
-        <div className='col-1'>
+      <div className='push-20'> {note && infoData('Note', note)}</div>
+      <div className='row'>
+        <div className='col-1 pos-start'>
           <Button
             func={() => setEditable(true)}
             color='blue'
@@ -42,7 +36,7 @@ export const ListItemInfo = ({ name, value, note, id }) => {
             icon={faPencilAlt}
           />
         </div>
-        <div className='col-1'>
+        <div className='col-1 pos-end'>
           <Button
             func={() => _delete()}
             color='red'
