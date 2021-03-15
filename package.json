@@ -1,6 +1,6 @@
 {
-  "name": "sass-test",
-  "version": "0.1.0",
+  "name": "react-json-to-report",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
